@@ -1,0 +1,20 @@
+// Simple chain polymers
+// Author: Yarden Katz, 2019
+
+// chain agent: x, y are chaining sites
+%agent: C(x,y)
+
+%var: 'init_C' 100
+%var: 'chain_bind_k' 0.01
+%var: 'chain_unbind_k' 0.05
+
+// chain formation
+// (allow only one building block to be added at a time)
+'form_chain' C(x,y[.]),C(x[.],y[.]) <-> C(x,y[1]),C(x[1],y[.]) @ 'chain_bind_k', 'chain_unbind_k'
+
+%init: 'init_C' C()
+
+%obs: 'atleast_two_chain' |C(x,y[1]),C(x[1],y)|
+%obs: 'exactly_two_chain' |C(x[.],y[1]),C(x[1],y[.])|
+
+%mod: alarm 1000.0 do $STOP "../snapshots/simple_chain";

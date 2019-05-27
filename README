@@ -6,4 +6,8 @@ A collection of Kappa models for inspiration and reuse.
 Running models
 ----------------
 
-To run all models, use ./run_models.sh. This will run KaSim on all the models, producing snapshots and output files.
+To run all models, use:
+
+  python run_models.py
+
+This will run KaSim on all the models, producing snapshots and output files.

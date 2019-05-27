@@ -17,4 +17,4 @@
 %obs: 'atleast_two_chain' |C(x,y[1]),C(x[1],y)|
 %obs: 'exactly_two_chain' |C(x[.],y[1]),C(x[1],y[.])|
 
-%mod: alarm 1000.0 do $STOP "../snapshots/simple_chain";
+%mod: alarm 100000.0 do $STOP "./snapshots/simple_chain.json";

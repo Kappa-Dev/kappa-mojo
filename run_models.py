@@ -12,6 +12,8 @@ import subprocess
 OUTDIR = "./outputs/"
 SNAPDIR = "./snapshots/"
 
+SEED = 10
+
 def check_KaSim():
     """
     Check if KaSim is available on path.
@@ -31,7 +33,7 @@ def run_KaSim(model_fname):
     model_name = model_basename.split(".ka")[0]
     dir_name = os.path.dirname(model_fname)
     out_fname = os.path.join(OUTDIR, "%s.out" %(model_name))
-    snapshot_fname = os.path.join(SNAPDIR, model_basename)
+    snapshot_fname = os.path.join(SNAPDIR, "%s.json" %(model_name))
     # remove older output/snapshot files
     older_files = [out_fname, snapshot_fname]
     for old_fname in older_files:
@@ -39,10 +41,11 @@ def run_KaSim(model_fname):
             print("Removing previous file: %s" %(old_fname))
             os.unlink(old_fname)
     print("Running %s" %(model_basename))
-    # run KaSim (and don't generate log files)
+    # run KaSim: don't generate log files and use seed
     cmd = \
-       '''KaSim --no-log -o {out_fname} {model_fname}'''.format(out_fname=out_fname,
-                                                                model_fname=model_fname)
+       '''KaSim --no-log -seed {seed} -o {out_fname} {model_fname}'''.format(out_fname=out_fname,
+                                                                             model_fname=model_fname,
+                                                                             seed=SEED)
     ret_val = os.system(cmd)
     if ret_val != 0:
         raise Exception("Failed to execute %s" %(cmd))

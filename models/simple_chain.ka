@@ -4,7 +4,7 @@
 // chain agent: x, y are chaining sites
 %agent: C(x,y)
 
-%var: 'init_C' 100
+%var: 'init_C' 500
 %var: 'chain_bind_k' 0.01
 %var: 'chain_unbind_k' 0.05
 
@@ -17,4 +17,4 @@
 %obs: 'atleast_two_chain' |C(x,y[1]),C(x[1],y)|
 %obs: 'exactly_two_chain' |C(x[.],y[1]),C(x[1],y[.])|
 
-%mod: alarm 100000.0 do $STOP "./snapshots/simple_chain.json";
+%mod: alarm 200000.0 do $STOP "./snapshots/simple_chain.json";

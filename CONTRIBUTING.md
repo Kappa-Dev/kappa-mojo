@@ -15,3 +15,5 @@ outputs
 	* ``outputs/simple_chain.out``: outputs (observables) from Kappa program
 	* ``docs/simple_chain.md``: documentation for model
 
+- After adding a model, put a link to it in [REPOSITORY.md](REPOSITORY.md)
+

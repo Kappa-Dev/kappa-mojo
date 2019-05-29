@@ -48,7 +48,7 @@ def main():
     print(info)
     # load Kappa snapshot (in JSON format)
     snap_obj = kappa_snap.KappaSnapshot(from_fname=info["snap_fname"])
-    snapshot_time = snap_obj["snapshot_time"]
+    snapshot_time = snap_obj.snapshot_time
     # calculate number of chains we have
     chain_hist = get_chain_hist(snap_obj)
     # make plot of chain length distribution
